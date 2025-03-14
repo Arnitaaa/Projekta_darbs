@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Augšupielādēt CSV</title>
+</head>
+<body>
+    <h1>Augšupielādē sporta datus</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Augšupielādēt</button>
+    </form>
+    <a href="{{ url_for('index') }}">Atpakaļ</a>
+</body>
+</html>

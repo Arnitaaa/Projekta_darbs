@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sports Latvijā</title>
+    <title>Sporta dati</title>
 </head>
 <body>
-    <h1>Laipni lūdzam!</h1>
-    <p><a href="/preili">Apskatīt Latvijas sporta veidus
-</a></p>
-  
+    <h1>Sporta veidi un to popularitāte</h1>
+    <a href="{{ url_for('upload') }}">Augšupielādēt CSV</a>
+    <a href="{{ url_for('visualize') }}">Skatīt grafikus</a>
+
+    <ul>
+        {% for row in data %}
+        <li>{{ row.name }} - Spēlētāji: {{ row.players }} - Popularitāte: {{ row.popularity }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

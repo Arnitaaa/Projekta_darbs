@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaunumi - Latvijas Treneru Federācija</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Latvijas Treneru Federācija</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Par Mums</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">Jaunumi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Kontakti</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="hero text-white text-center d-flex align-items-center justify-content-center" style="background: #007bff; height: 300px;">
+        <div class="container">
+            <h1 class="display-4">Jaunumi sportā un treneru pasaulē</h1>
+            <p class="lead">Aktuālā informācija un jaunākie notikumi</p>
+        </div>
+    </header>
+    
+    <section id="news" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Jaunākās Ziņas</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='enu_diena.jpg') }}" class="card-img-top" alt="Ēnu diena">
+                        <div class="card-body">
+                            <h5 class="card-title">Ēnu diena – iespēja jauniešiem iepazīt trenera profesiju</h5>
+                            <p class="card-text">Jauniešiem būs iespēja sekot līdzi pieredzējušiem treneriem un uzzināt vairāk par viņu darbu.</p>
+                            <a href="{{ url_for('enu_diena') }}" class="btn btn-primary">Lasīt vairāk</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='news2.jpg') }}" class="card-img-top" alt="Treneru sertifikācija">
+                        <div class="card-body">
+                            <h5 class="card-title">Jauna treneru sertifikācijas programma</h5>
+                            <p class="card-text">Uzziniet vairāk par iespējām iegūt sertifikātu.</p>
+                            <a href="#" class="btn btn-primary">Lasīt vairāk</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='Latvijas_sprinteris_triumfe_sacensibas.webp') }}" class="card-img-top" alt="Latvijas sprinteris uzvar sacensībās">
+                        <div class="card-body">
+                            <h5 class="card-title">Latvijas sprinteris triumfē sacensībās</h5>
+                            <p class="card-text">Latvijas sportists izcīna zelta medaļu starptautiskās sacensībās.</p>
+                            <a href="#" class="btn btn-primary">Lasīt vairāk</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='Latvijas_hokeja_komanda_svin_uzvaru.webp') }}" class="card-img-top" alt="Latvijas hokeja komanda svin uzvaru">
+                        <div class="card-body">
+                            <h5 class="card-title">Latvijas hokeja komanda svin uzvaru</h5>
+                            <p class="card-text">Latvijas hokeja izlase gūst svarīgu uzvaru pasaules čempionātā.</p>
+                            <a href="#" class="btn btn-primary">Lasīt vairāk</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 <a href="{{ url_for('home') }}" class="text-link text-white">Latvijas Treneru Federācija</a>. Visas tiesības aizsargātas.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

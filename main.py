@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 CSV_FILE = "treneri.csv"
 
-
+# 🔹 Функция загрузки данных из CSV
 def load_trainers():
     if os.path.exists(CSV_FILE):
         try:
@@ -18,7 +18,7 @@ def load_trainers():
             print("❌ Kļūda CSV failā:", e)
     return []
 
-
+# 🔹 Главные страницы
 @app.route("/")
 def home():
     return render_template("main.html")
@@ -53,7 +53,7 @@ def enu_diena():
     data = load_trainers()
     return render_template("enu_diena.html", message=message, data=data)
 
-
+# 🔹 API для передачи данных в график
 @app.route("/chart_data")
 def chart_data():
     if os.path.exists(CSV_FILE):
@@ -62,7 +62,7 @@ def chart_data():
         return jsonify(data)
     return jsonify({})
 
-
+# 🔹 Обработка загрузки CSV
 @app.route("/upload_csv", methods=["POST"])
 def upload_csv():
     file = request.files.get("file")
@@ -74,7 +74,7 @@ def upload_csv():
             return redirect(url_for("enu_diena", message=f"❌ Neizdevās saglabāt failu: {e}"))
     return redirect(url_for("enu_diena", message="❌ Lūdzu, izvēlieties derīgu CSV failu."))
 
-
+# 🔹 Обработка кнопки "Pieteikties"
 @app.route("/sign_up", methods=["POST"])
 def sign_up():
     iestade = request.form.get("iestade")
@@ -83,7 +83,7 @@ def sign_up():
     print(f"📌 Pieteikšanās saņemta: {iestade}, {sporta_veids}, {treneru_skaits}")
     return redirect(url_for("enu_diena", message="✅ Jūs veiksmīgi pieteicāties!"))
 
-
+# 🔹 Автоматически открыть браузер (только если Flask запущен напрямую)
 def open_browser():
     if not os.environ.get("FLASK_RUN_FROM_CLI"):
         webbrowser.open_new("http://127.0.0.1:5000/")

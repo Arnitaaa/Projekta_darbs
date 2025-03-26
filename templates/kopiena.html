@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopiena - Latvijas Treneru Federācija</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .black-link {
+            color: black;
+            text-decoration: none;
+        }
+        .black-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="nav-link" href="{{ url_for('home') }}">Latvijas Treneru Federācija</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="">Par Mums</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Pakalpojumi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Kontakti</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="hero text-white text-center d-flex align-items-center justify-content-center" style="background: #007bff; height: 300px;">
+        <div class="container">
+            <h1 class="display-4">Treneru Kopiena</h1>
+            <p class="lead">Sadarbība, atbalsts un kopīga izaugsme</p>
+        </div>
+    </header>
+    
+    <section class="py-5">
+        <div class="container text-center">
+            <h2>Par Kopienu</h2>
+            <p>Latvijas treneru kopiena ir vieta, kur dalīties pieredzē, iegūt jaunus kontaktus un veidot sadarbību.</p>
+        </div>
+    </section>
+    
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2>Ko piedāvā kopiena?</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-handshake fa-3x mb-3"></i>
+                    <h4><a href="{{ url_for('kopiena') }}" class="black-link">Tīklošanās</a></h4>
+                    <p>Iepazīstieties ar citiem treneriem un veidojiet profesionālus sakarus.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-comments fa-3x mb-3"></i>
+                    <h4>Diskusijas un forumi</h4>
+                    <p>Apspriediet aktuālos sporta un treneru jautājumus.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-calendar-alt fa-3x mb-3"></i>
+                    <h4><a href="{{ url_for('Pasakumi') }}" class="black-link">Pasākumi un semināri</a></h4>
+                    <p>Piedalieties nozares pasākumos un attīstiet savas prasmes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-5">
+        <div class="container text-center">
+            <h2>Pievienojieties kopienai</h2>
+            <p>Aizpildiet pieteikumu un kļūstiet par daļu no mūsu aktīvās treneru kopienas.</p>
+            <a href="mailto:info@latvijastreneri.lv" class="btn btn-primary">Pievienoties</a>
+        </div>
+    </section>
+    
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 <a href="{{ url_for('home') }}" class="text-link text-white">Latvijas Treneru Federācija</a>. Visas tiesības aizsargātas.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

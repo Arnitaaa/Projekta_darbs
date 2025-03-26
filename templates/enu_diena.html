@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ēnu diena - Latvijas Treneru Federācija</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 900px; margin-top: 40px; }
+        .table-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); max-height: 400px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Latvijas Treneru Federācija</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="text-center my-4">Izvēlieties treneri Ēnu dienai</h2>
+
+        {% if message %}
+            <div class="alert alert-info text-center">{{ message }}</div>
+        {% endif %}
+
+        <!-- 🔹 Форма для загрузки CSV -->
+        <div class="text-center my-3">
+            <form action="{{ url_for('upload_csv') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".csv" required>
+                <button type="submit" class="btn btn-success">📂 Augšupielādēt CSV</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Iestāde</th>
+                        <th>Sporta veids</th>
+                        <th>Treneru skaits</th>
+                        <th>Darbība</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row['Iestāde'] }}</td>
+                        <td>{{ row['Sporta veids'] }}</td>
+                        <td>{{ row['Treneru skaits'] }}</td>
+                        <td>
+                            <form action="/sign_up" method="POST">
+                                <input type="hidden" name="iestade" value="{{ row['Iestāde'] }}">
+                                <input type="hidden" name="sporta_veids" value="{{ row['Sporta veids'] }}">
+                                <input type="hidden" name="treneru_skaits" value="{{ row['Treneru skaits'] }}">
+                                <button type="submit" class="btn btn-primary">📌 Pieteikties</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="text-center mt-5">Treneru skaits pēc sporta veida</h3>
+        <canvas id="trainerChart"></canvas>
+    </div>
+
+    <script>
+        async function loadChartData() {
+            const response = await fetch("/chart_data");
+            const data = await response.json();
+
+            const ctx = document.getElementById("trainerChart").getContext("2d");
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        label: "Treneru skaits",
+                        data: Object.values(data),
+                        backgroundColor: "rgba(54, 162, 235, 0.6)",
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        loadChartData();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

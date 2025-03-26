@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikācija - Latvijas Treneru Federācija</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .accordion-button {
+            background: none;
+            border: none;
+            box-shadow: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+        .accordion-button::after {
+            content: none;
+        }
+        .accordion-button i {
+            transition: transform 0.3s ease;
+        }
+        .accordion-button[aria-expanded="true"] i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Latvijas Treneru Federācija</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="#navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#about">Par Mums</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#services">Pakalpojumi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#contact">Kontakti</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="hero text-white text-center d-flex align-items-center justify-content-center" style="background: #007bff; height: 300px;">
+        <div class="container">
+            <h1 class="display-4">Sertifikācija</h1>
+            <p class="lead">Oficiāli treneru sertifikāti un kvalifikācijas celšana</p>
+        </div>
+    </header>
+    
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center">Sertifikācijas Process</h2>
+            <p class="text-center">Lai iegūtu sertifikātu, izpildiet šādas darbības:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Reģistrējieties kā treneris mūsu sistēmā</li>
+                
+                <li class="list-group-item">
+                    <div class="accordion" id="kursiAccordion">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <span>Izpildiet nepieciešamos mācību kursus</span>
+                                    <i class="fas fa-chevron-down ms-2"></i>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#kursiAccordion">
+                                <div class="accordion-body">
+                                    <p>Jūs varat izpildīt mācību kursus šādās iestādēs:</p>
+                                    <ul>
+                                        <li><a href="https://www.lspa.lv" target="_blank">Latvijas Sporta pedagoģijas akadēmija</a></li>
+                                        <li><a href="https://www.rtu.lv" target="_blank">Rīgas Tehniskā universitāte - Sporta centrs</a></li>
+                                        <li><a href="https://www.olimpiade.lv" target="_blank">Latvijas Olimpiskā komiteja</a></li>
+                                        <li><a href="https://www.sportaizglitiba.lv" target="_blank">Sporta Izglītības centrs</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="accordion" id="examsAccordion">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <span>Nokārtojiet pārbaudījumus un eksāmenus</span>
+                                    <i class="fas fa-chevron-down ms-2"></i>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#examsAccordion">
+                                <div class="accordion-body">
+                                    <p>Eksāmeni sastāv no šādām daļām:</p>
+                                    <ul>
+                                        <li>Teorētiskais eksāmens par sporta metodiku</li>
+                                        <li>Praktiskais eksāmens treniņu vadībā</li>
+                                        <li>Pirmās palīdzības sniegšanas tests</li>
+                                        <li>Psiholoģijas un komunikācijas prasmju novērtējums</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">Saņemiet savu oficiālo sertifikātu</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2>Sazinieties ar mums</h2>
+            <p>Ja jums ir jautājumi par sertifikāciju, rakstiet mums!</p>
+            <a href="mailto:info@latvijastreneri.lv" class="btn btn-primary">Rakstīt mums</a>
+        </div>
+    </section>
+    
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 <a href="{{ url_for('home') }}" class="text-link text-white">Latvijas Treneru Federācija</a>. Visas tiesības aizsargātas.</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
